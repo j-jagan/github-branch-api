@@ -5,7 +5,6 @@ workflow_dispatch
 
 jobs: 
 Github_branch:
-name: Github_get_branch
 runs-on: ubuntu-latest
 
 steps:
@@ -20,10 +19,14 @@ steps:
 #===============================================================
 # getting the branch details of the repository using github api
 #===============================================================
-curl \
+-name: getting the branch details of the repository
+ run: |
+   set +x
+   curl \
   -H "Accept: application/vnd.github+json" \
   -H "Authorization: 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" \
   https://api.github.com/repos/j-jagan/github-branch-api
+  set -x
 #===============================================================
 # clean down workspace
 #===============================================================
