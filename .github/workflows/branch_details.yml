@@ -1,7 +1,6 @@
 name: Github_branch_api
 
-on: 
-workflow_dispatch
+on: workflow_dispatch
 
 jobs: 
 Github_branch:
