@@ -1,8 +1,10 @@
 name: Github_branch_api
 on: 
   workflow_dispatch
+  
 jobs: 
-Github_branch:
+Github_branch
+
 runs-on: 
 ubuntu-latest
 
