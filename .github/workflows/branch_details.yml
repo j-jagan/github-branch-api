@@ -1,12 +1,10 @@
-name: Github_branch_api
-on: 
-  workflow_dispatch
-  
-jobs: 
-Github_branch
+name: branch-workflow
 
-runs-on: 
-ubuntu-latest
+on: workflow_dispatch
+
+jobs:
+  branches-deploy:
+    runs-on: ubuntu-latest
 
 steps:
 #===============================================================
