@@ -1,0 +1,33 @@
+name: Github_branch_api
+
+on: 
+workflow_dispatch
+
+jobs: 
+Github_branch:
+runs-on: ubuntu-latest
+
+steps:
+#===============================================================
+# clean down workspace
+#===============================================================
+-name: cleaning up workspace
+ run: |
+   echo "Cleaning up previous run"
+   rm -rf "${{ github.workspace }}/*"
+   
+#===============================================================
+# getting the branch details of the repository using github api
+#===============================================================
+curl \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer <YOUR-TOKEN>" \
+  https://api.github.com/repos/OWNER/REPO/branches
+#===============================================================
+# clean down workspace
+#===============================================================
+-name: cleaning down workspace
+ run: |
+   echo "Cleaning down workspace"
+   rm -rf "${{ github.workspace }}/*"
+  
