@@ -5,6 +5,7 @@ workflow_dispatch
 
 jobs: 
 Github_branch:
+name: Github_get_branch
 runs-on: ubuntu-latest
 
 steps:
