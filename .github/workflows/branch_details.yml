@@ -6,28 +6,28 @@ jobs:
    branches-deploy:
     runs-on: ubuntu-latest
 
-steps:
+    steps:
 #===============================================================
 # clean down workspace
 #===============================================================
--name: cleaning up workspace
- run: |
-   echo "Cleaning up previous run"
-   rm -rf "${{ github.workspace }}/*"
+    - name: cleaning up workspace
+      run: |
+       echo "Cleaning up previous run"
+       rm -rf "${{ github.workspace }}/*"
    
 #===============================================================
 # getting the branch details of the repository using github api
 #===============================================================
--name: getting the branch details of the repository
- run: |
-   set +x
-   curl -H "Accept: application/vnd.github+json" -H "Authorization: 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" https://api.github.com/repos/j-jagan/github-branch-api
-   set -x
+    - name: getting the branch details of the repository
+      run: |
+       set +x
+       curl -H "Accept: application/vnd.github+json" -H "Authorization: ${{ secrets.RUNNER_TOKEN }}" https://api.github.com/repos/j-jagan/github-branch-api
+       set -x
 #===============================================================
 # clean down workspace
 #===============================================================
--name: cleaning down workspace
- run: |
-   echo "Cleaning down workspace"
-   rm -rf "${{ github.workspace }}/*"
+    - name: cleaning down workspace
+      run: |
+       echo "Cleaning down workspace"
+       rm -rf "${{ github.workspace }}/*"
   
