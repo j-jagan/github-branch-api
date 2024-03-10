@@ -31,7 +31,8 @@ jobs:
           echo "Removing branch protection for $repo"
           echo "----------------------------------------------"
           curl -L -X DELETE -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" -H "X-GitHub-Api-Version: 2022-11-28" https://api.github.com/repos/j-jagan/$repo/branches/main/protection
-
+        done
+        
     #===============================================
     # Clean Down Workspace
     #===============================================
