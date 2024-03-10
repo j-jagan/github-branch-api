@@ -1,0 +1,43 @@
+name: branch-protection
+
+on: workflow_dispatch
+
+env:
+  Repos:
+    github-branch-api
+    
+jobs: 
+  branch-protection:
+    runs-on: ubuntu_latest
+
+    steps:
+
+    #========================================
+    # Clean down workspace
+    #========================================
+    - name: cleaning up previous run
+      run: |
+        echo "Cleaning up Previous run"
+        rm -rf "${{ github.workspace }}/*"
+
+    #===============================================
+    # Enabling branch protection to the main branch
+    #===============================================
+    - name: Set Branch Protection 
+      run: |
+        echo "Applying branch protection to main branch"
+        for repo in ${{ env.Repos }}; do
+          echo "----------------------------------------------"
+          echo "Setting branch protection for $repo"
+          echo "----------------------------------------------"
+          curl -X PUT -H "Accept: application/vnd.github.json" -H "Authorization: token ${{ secrets.RUNNER_TOKEN }}" https://github.com/repos/j-jagan/$repo/branches/main/protection -d '{"required_status_checks":null,"enforce_admins":true,"required_pull_request_reviews":{"dismiss_stale_reviews":true,"require_code_owner_reviews":true,"required_approving_review_count":1},"restrictions":null,"required_linear_history":null,"allow_force_pushes":null,"allow_deletions":null,"block_creations":null,"required_conversation_resolution":null}'
+        done
+
+    #===============================================
+    # Clean Down Workspace
+    #===============================================
+    - name: Clean Down Workspace
+      run: |
+        echo "Cleaning down workspace"
+        rm -rf "${{ github.workspace }}/*"
+        
