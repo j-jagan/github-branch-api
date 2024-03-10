@@ -30,7 +30,7 @@ jobs:
           echo "----------------------------------------------"
           echo "Setting branch protection for $repo"
           echo "----------------------------------------------"
-          curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: ${{ secrets.RUNNER_TOKEN }}" https://github.com/repos/j-jagan/$repo/branches/main/protection -d '{"required_status_checks":null,"enforce_admins":true,"required_pull_request_reviews":{"dismiss_stale_reviews":true,"require_code_owner_reviews":true,"required_approving_review_count":1},"restrictions":null,"required_linear_history":null,"allow_force_pushes":null,"allow_deletions":null,"block_creations":null,"required_conversation_resolution":null}'
+          curl -X PUT -H "Accept: application/vnd.github+json" -H "Authorization: ${{ secrets.RUNNER_TOKEN }}" https://api.github.com/repos/j-jagan/$repo/branches/main/protection -d '{"required_status_checks":null,"enforce_admins":true,"required_pull_request_reviews":{"dismiss_stale_reviews":true,"require_code_owner_reviews":true,"required_approving_review_count":1},"restrictions":null,"required_linear_history":null,"allow_force_pushes":null,"allow_deletions":null,"block_creations":null,"required_conversation_resolution":null}'
         done
 
     #===============================================
