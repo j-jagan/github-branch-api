@@ -8,7 +8,7 @@ env:
     
 jobs: 
   branch-protection:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
 
     steps:
 
